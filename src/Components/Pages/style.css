@@ -1,0 +1,121 @@
+/*Login and Signup style*/
+
+.top-area{
+    background-color: rgb(237, 224, 247);
+    border-radius:0 0 40% 40%;
+    height:30vh;
+    box-shadow:1px 1px 20px  rgb(154,0,255);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    overflow: hidden;
+}
+.fa-arrow-left{
+    padding-top:15px;
+    font-size:35px;
+    color:rgb(204,0,255);
+    float:right;
+}
+.brand-img{
+    width:120px;
+    height:120px;
+}
+.brand-name{
+    font-size:30px;
+    font-family: 'Lobster', cursive;
+}
+.brand-tag{
+    font-size:20px;
+    font-family: 'Lobster', cursive;
+}
+.login-form{
+    margin-top:10%;
+    width:100%;
+    overflow: hidden;
+}
+.input-tag{
+    width:100%;
+    height:50px;
+    border-radius:20px;
+    margin-top:10px;
+    padding:10px;
+    border:1px solid rgb(154,0,255);
+    box-shadow:1px 1px 20x rgb(154,0,255);
+    outline:none;
+}
+.login-btn{
+    width:100%;
+    border-radius:20px;
+    margin-top:10px;
+    padding:12px;
+    outline:none;
+    border:none;
+    background:  rgb(154,0,255);
+    color:#fff;
+    font-family: 'Lobster', cursive;
+    font-size:20px;
+}
+.login-btn:hover{
+    background:  rgb(182, 81, 250);
+    cursor: pointer;
+    transition: .3s;
+}
+.or-div{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.or-btn{
+    /* margin:7px; */
+    width:50px;
+    height:50px;
+    padding:5px;
+    border-radius:50%;
+    outline:none;
+    font-family: 'Lobster', cursive;
+    border:1px solid rgb(182, 81, 250);
+    box-shadow:1px 1px 20px rgb(154,0,255);
+}
+
+/*Login and Signup style*/
+
+/*Search Page*/
+.search-area{
+    overflow:hidden;
+    padding:10px;
+}
+.search-box{
+    width:100%;
+    height:50px;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    box-shadow:1px 1px 5px  rgb(154,0,255);
+}
+
+.typing-area{
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+.input{
+    width:78%;
+    margin-bottom: 10px;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    box-shadow:1px 1px 5px #232323;
+    margin-right:5px;
+}
+.sendbtn{
+    padding:8px;
+    width:15%;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    box-shadow:1px 1px 5px #232323;
+    background-color:rgb(154,0,255);
+    color:#ffff;
+}
