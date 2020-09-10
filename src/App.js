@@ -38,7 +38,7 @@ const Routing=()=>{
       <Route  path="/search">
         <Search/>
       </Route>
-      <Route path ="/chat/:friend">
+      <Route path ="/chat/:friend/:id">
         <Chat/>
       </Route>
     </Switch>

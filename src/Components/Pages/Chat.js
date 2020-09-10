@@ -6,25 +6,27 @@ import {UserContext} from '../../App'
 import './style.css'
 let socket;
 const ENDPOINT='http://localhost:5000';
-function Chat({location}) {
+function Chat() {
 
     const {state,dispatch}=useContext(UserContext)
-    const [User,setUser]=useState(state.username)
+    const [User,setUser]=useState('')
     const [Friend,setFriend]=useState('')
+    const [FriendId,setFriendId]=useState('')
     const [message,setMessage]=useState('')
     const [messages,setMessages]=useState([])
     const {friend}=useParams();
+    const {id}=useParams()
     useEffect(()=>{
-        // const {sender,reciever}=queryString.parse(location.search);
 
         socket=io(ENDPOINT);
+        setUser(state?state.username:'loading....')
        setFriend(friend);
-socket.on('testmessage',(data)=>{
-    console.log(data)
-})
+       setFriendId(id);
+        socket.on('testmessage',(data)=>{
+            console.log(data)
+        })
        return ()=>{
            socket.emit('disconnect');
-
            socket.off();
        }
     },[]);

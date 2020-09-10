@@ -119,3 +119,20 @@
     background-color:rgb(154,0,255);
     color:#ffff;
 }
+.single-user{
+    padding:5px;
+    padding-left:15px;
+    border-bottom:1px solid lightgray;
+}
+
+.friend{
+    font-size:25px;
+    padding:10px;
+    text-transform: capitalize;
+    color:rgb(154,0,255);
+    font-weight: 600;
+
+}
+.namearea{
+    padding-top:20px;
+}

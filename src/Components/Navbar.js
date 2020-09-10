@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './style.css'
-import { Link } from 'react-router-dom';
+import { Link ,useHistory} from 'react-router-dom';
 import Logo from '../Images/mainlogo.png';
+import {UserContext} from '../App'
 function Navbar() {
+    const {state,dispatch}=useContext(UserContext)
+    const history=useHistory();
     return (
         <div className="container-fluid header">
             <div className="row top-nav">
@@ -15,9 +18,15 @@ function Navbar() {
                     <p className="brand-name">ChatInReact</p>
                 </div>
                 <div className="col text-center">
-                    <Link to ="/notification">
-                        <i className="fa fa-bell"></i>
-                    </Link>
+                    <button 
+                        style={{background:"transparent",border:"none",outline:"none"}}
+                        onClick={()=>{
+                        localStorage.clear()
+                        dispatch({type:"CLEAR"})
+                        history.push("/login")
+                        }}>
+                        <i className="fa fa-power-off"></i>
+                    </button>
                 </div>
             </div>
         </div>
