@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import './style.css';
 import {Link,useHistory} from 'react-router-dom'
 import Brand from '../../Images/mainlogo.png'
+const url='https://reactappserver.herokuapp.com';
 function SignUp() {
 
     const[UserName,setUserName]=useState('');
@@ -11,7 +12,7 @@ function SignUp() {
     const history=useHistory()
     const SignUpHandler=(e)=>{
         e.preventDefault();
-        fetch("http://localhost:5000/signup",{
+        fetch(`${url}/signup`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"

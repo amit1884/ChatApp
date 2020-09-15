@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../Images/mainlogo.png';
 import Navbar from '../Navbar';
 import SearchBtn from '../SearchBtn';
-import Friend from '../Friend';
 import img from '../../Images/homeempty.svg';
+const url='https://reactappserver.herokuapp.com';
 function Home() {
 
     const [FriendsDetails,setFriendDetails]=useState([]) //Storing all the friends in an array
@@ -13,7 +13,7 @@ function Home() {
     useEffect(()=>{
 
         console.log('getting friend list')
-        fetch("http://localhost:5000/getfriends",{
+        fetch(`${url}/getfriends`,{
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
             }

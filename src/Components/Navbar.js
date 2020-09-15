@@ -4,7 +4,7 @@ import { Link ,useHistory} from 'react-router-dom';
 import Logo from '../Images/mainlogo.png';
 import {UserContext} from '../App'
 function Navbar() {
-    const {state,dispatch}=useContext(UserContext)
+    const {dispatch}=useContext(UserContext)
     const history=useHistory();
     return (
         <div className="container-fluid header">

@@ -5,13 +5,14 @@ import {useParams} from 'react-router-dom'
 import {UserContext} from '../../App'
 import './style.css'
 let socket;
-const ENDPOINT='http://localhost:5000';
+const url='https://reactappserver.herokuapp.com';
+const ENDPOINT='https://reactappserver.herokuapp.com';
 function Chat() {
 
-    const {state,dispatch}=useContext(UserContext)
-    const [User,setUser]=useState('')
+    const {state}=useContext(UserContext)
+    // const [User,setUser]=useState('')
     const [Friend,setFriend]=useState('')
-    const [FriendId,setFriendId]=useState('')
+    // const [FriendId,setFriendId]=useState('')
     const [message,setMessage]=useState('')
     const [messages,setMessages]=useState([])
     const [OldMessages,setOldMessages]=useState([])
@@ -21,14 +22,14 @@ function Chat() {
     useEffect(()=>{
 
         socket=io(ENDPOINT);
-        setUser(state?state.username:'loading....')
+        // setUser(state?state.username:'loading....')
        setFriend(friend);
-       setFriendId(id);
+    //    setFriendId(id);
 
        socket.emit('join',{id,friend,room},()=>{
 
        })
-       fetch('http://localhost:5000/oldmessages/'+room)
+       fetch(`${url}/oldmessages/`+room)
        .then(res=>res.json())
        .then(result=>{
 

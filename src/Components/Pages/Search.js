@@ -4,6 +4,7 @@ import {UserContext} from '../../App'
 import Navbar from '../Navbar';
 import './style.css'
 import Avatar from '../../Images/mainlogo.png'
+const url='https://reactappserver.herokuapp.com';
 function Search() {
     const [SearchText,setSearchText]=useState('');
     const [userDetails,setUserDetails]=useState([])
@@ -20,7 +21,7 @@ function Search() {
             setUserDetails([])
         }
         else{
-            fetch("http://localhost:5000/search_user",{
+            fetch(`${url}/search_user`,{
                 method:"post",headers:{
                     "Content-Type":"application/json",
                 },
@@ -30,7 +31,7 @@ function Search() {
             })
             .then(res=>res.json())
             .then(result=>{
-                console.log(result)
+                // console.log(result)
                 setUserDetails(result.user)
             })
         }
@@ -47,7 +48,7 @@ function Search() {
 const AddFriend=()=>{
 
     console.log('Friend id ::',FriendId)
-    fetch("http://localhost:5000/addfriend",{
+    fetch(`${url}/addfriend`,{
         method:"post",
         headers:{
             "Content-Type":"application/json",
@@ -59,7 +60,7 @@ const AddFriend=()=>{
     })
     .then(res=>res.json())
     .then(data=>{
-        console.log('result  ',data)
+        // console.log('result  ',data)
         //Updating the state of reducer and localstorage 
         dispatch({type:"UPDATE",payload:{friendList:data.friendList}})
         localStorage.setItem("user",JSON.stringify(data))
@@ -82,12 +83,20 @@ const AddFriend=()=>{
                 {
                     userDetails.map(item=>{
                         return(
-                            <div className="single-user" onClick={()=>openModal(item._id,item.username)}>
+                            <>
+                            {
+                                item._id!==state._id
+                                ?
+                                <div className="single-user" onClick={()=>openModal(item._id,item.username)}>
                                 <p key={item._id}>
                                     <img src ={Avatar} alt="userdp"align="left" width="40" height="40"/>&nbsp;&nbsp;
                                     {item.username}
                                 </p>
                             </div>
+                            :
+                            null
+                            }
+                            </>
                         )
                     })
                 }
