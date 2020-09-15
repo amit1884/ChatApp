@@ -175,3 +175,36 @@
     color:#ffff;
     cursor: pointer;
 }
+.message-area{
+    overflow-y:scroll;
+    margin-top:10px;
+    margin-bottom:40px;
+    height:78vh;
+}
+
+.rightbox{
+    padding:20px;
+    font-size:15px;
+    margin:10px auto;
+    background:rgb(66, 1, 109);
+    color:#fff;
+    float:right;
+    display:block;
+    width:60%;
+    border-radius: 20px;
+    word-wrap: break-word;
+    overflow:hidden;
+}
+.leftbox{
+    display:block;
+    padding:20px;
+    margin:10px auto;
+    width:60%;
+    font-size:15px;
+    background:rgb(186, 108, 238);
+    color:#fff;
+    float:left;
+    border-radius: 20px;
+    word-wrap: break-word;
+    overflow:hidden;
+}

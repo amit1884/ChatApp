@@ -98,13 +98,13 @@ function Login() {
                     </button>
                    </Link>
                 </div>
-                <div>
+                {/* <div>
                     <button
                     className="login-btn"
                     >
                         Login With Facebook
                     </button>
-                </div>
+                </div> */}
               </div>
           </div>
       </div>

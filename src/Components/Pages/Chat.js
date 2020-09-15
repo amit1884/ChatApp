@@ -62,16 +62,22 @@ function Chat() {
                 {
                     OldMessages.map(items=>{
                         return(
-                            <p>{items.sender}&nbsp;&nbsp;&nbsp;
-                                {items.text}</p>
-                   
+                            <>
+                            <div className={items.sender===state.username?'rightbox':'leftbox'}>
+                                <p >{items.text}</p>
+                            </div>
+                            </>
                         )
                     })
                 }
+                <br/>
                {messages.map(item=>{
                    return(
-                   <p>{item.sender}&nbsp;&nbsp;&nbsp;
-                      {item.text}</p>
+                       <>
+                        <div className={item.sender===state.username?'rightbox':'leftbox'}>
+                            <p>{item.text}</p>
+                        </div>
+                       </>
                    )
                })}
             </div>
