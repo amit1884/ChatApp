@@ -5,11 +5,14 @@ import Avatar from '../../Images/mainlogo.png';
 import Navbar from '../Navbar';
 import SearchBtn from '../SearchBtn';
 import Friend from '../Friend';
+import img from '../../Images/homeempty.svg';
 function Home() {
 
-    const [FriendsDetails,setFriendDetails]=useState([])
+    const [FriendsDetails,setFriendDetails]=useState([]) //Storing all the friends in an array
+ 
     useEffect(()=>{
 
+        console.log('getting friend list')
         fetch("http://localhost:5000/getfriends",{
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
@@ -17,10 +20,13 @@ function Home() {
         })
         .then(res=>res.json())
         .then(result=>{
-            console.log(result.users.friendList)
-            setFriendDetails(result.users.friendList)
+            console.log('result  ',result.friendList)
+            setFriendDetails(result.friendList)
         })
     },[])
+
+   
+
     return (
        <>
        <Navbar/>
@@ -29,17 +35,36 @@ function Home() {
             FriendsDetails.map(item=>{
                 return(
                     <>
-                    <Link to ={`/chat/${item.username}/${item._id}`} key={item._id}>
+                    <Link 
+                    style={{textDecoration:"none",cursor:"pointer"}}
+                    to ={`/chat/${item.users.username}/${item.users._id}/${item.room}`} 
+                    key={item.users._id}>
                     <p className="friend">
                         <img src ={Avatar} alt ="dp" align="left"width="50" height="50"/>
                         &nbsp;&nbsp;
-                        <span className="namearea">{item.username}</span>
+                        <span className="namearea">{item.users.username}</span>
                     </p>
                     </Link>
                     <hr/>
                     </>
                 )
             })
+        }
+        {
+            FriendsDetails.length<=0?
+            <>
+            <div
+            style={{display:"flex",justifyContent:"center",alignItems:"center"}}
+            >
+                <img src ={img} alt="ksbc" width="300" style={{marginTop:"170px"}}/>
+               
+            </div>
+            <br/>
+            <div className="text-center">
+                <h6>Add Friends and start Chatting !</h6>
+            </div>
+            </>
+            :null
         }
        </>
     )

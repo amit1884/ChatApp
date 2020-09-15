@@ -7,6 +7,9 @@ import Avatar from '../../Images/mainlogo.png'
 function Search() {
     const [SearchText,setSearchText]=useState('');
     const [userDetails,setUserDetails]=useState([])
+    const [FriendId,setFriendId]=useState('') //Id of friend to be added ,it is passed to the modal
+    const [Username,setUsername]=useState('')
+    const [showModal,setshowModal]=useState(false)
     const {state,dispatch}=useContext(UserContext)
 
     const SearchChangeHandler=(query)=>{
@@ -34,7 +37,34 @@ function Search() {
         
     }
 
+ //Function to open modal
+ const openModal=(id,username)=>{
+    setFriendId(id);
+    setUsername(username);
+    setshowModal(true);
+}
 
+const AddFriend=()=>{
+
+    console.log('Friend id ::',FriendId)
+    fetch("http://localhost:5000/addfriend",{
+        method:"post",
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization":"Bearer "+localStorage.getItem("jwt")
+        },
+        body:JSON.stringify({
+            friendId:FriendId
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log('result  ',data)
+        //Updating the state of reducer and localstorage 
+        dispatch({type:"UPDATE",payload:{friendList:data.friendList}})
+        localStorage.setItem("user",JSON.stringify(data))
+    })
+}
 
     return (
         <>
@@ -52,7 +82,7 @@ function Search() {
                 {
                     userDetails.map(item=>{
                         return(
-                            <div className="single-user">
+                            <div className="single-user" onClick={()=>openModal(item._id,item.username)}>
                                 <p key={item._id}>
                                     <img src ={Avatar} alt="userdp"align="left" width="40" height="40"/>&nbsp;&nbsp;
                                     {item.username}
@@ -62,6 +92,18 @@ function Search() {
                     })
                 }
             </div>
+            {
+            showModal
+            ?
+            <div className="model-container" onClick={()=>setshowModal(false)}>
+                <div className="mycard text-center">
+                    <h5>Do you want to add <span style={{color:"rgb(48, 3, 78)"}}>{Username}</span> as a friend ?</h5><br/>
+                    <button className="model-btn" onClick={()=>AddFriend()}>Yes</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button className="model-btn" onClick={()=>setshowModal(false)}>No</button>
+                </div>
+            </div>
+            :null
+        }
 
         </>
     )

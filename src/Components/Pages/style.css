@@ -136,3 +136,42 @@
 .namearea{
     padding-top:20px;
 }
+.namearea:hover{
+    text-decoration: none;
+}
+
+.model-container{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:99;
+    background-color: rgba(0,0,0,0.5);
+}
+.mycard{
+    margin:200px auto;
+    width:90%;
+    height:300px;
+    padding-top:100px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+.mycard h5{
+    color:rgb(154,0,255);
+    /* color:rgb(48, 3, 78); */
+    font-family: 'Lobster', cursive;
+    font-size:20px;
+    
+}
+.model-btn{
+    padding:8px;
+    width:15%;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    box-shadow:1px 1px 5px #232323;
+    background-color:rgb(154,0,255);
+    color:#ffff;
+    cursor: pointer;
+}

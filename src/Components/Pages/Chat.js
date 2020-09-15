@@ -14,17 +14,29 @@ function Chat() {
     const [FriendId,setFriendId]=useState('')
     const [message,setMessage]=useState('')
     const [messages,setMessages]=useState([])
+    const [OldMessages,setOldMessages]=useState([])
     const {friend}=useParams();
     const {id}=useParams()
+    const {room}=useParams()
     useEffect(()=>{
 
         socket=io(ENDPOINT);
         setUser(state?state.username:'loading....')
        setFriend(friend);
        setFriendId(id);
-        socket.on('testmessage',(data)=>{
-            console.log(data)
-        })
+
+       socket.emit('join',{id,friend,room},()=>{
+
+       })
+       fetch('http://localhost:5000/oldmessages/'+room)
+       .then(res=>res.json())
+       .then(result=>{
+
+        console.log(result)
+        setOldMessages(result)
+       })
+       .catch(err=>console.log('error',err))
+
        return ()=>{
            socket.emit('disconnect');
            socket.off();
@@ -39,7 +51,7 @@ function Chat() {
 
     const sendMessage=(event)=>{
         event.preventDefault();
-        socket.emit('sendmessage',({text:message}))
+        socket.emit('sendmessage',({text:message,sender:state.username,room:room}))
         setMessage('')
     }
     return (
@@ -47,9 +59,19 @@ function Chat() {
         <InfoBar friend={Friend} style={{position:"fixed",top:0}}/>
         <div className="container-fluid">
             <div className="message-area">
+                {
+                    OldMessages.map(items=>{
+                        return(
+                            <p>{items.sender}&nbsp;&nbsp;&nbsp;
+                                {items.text}</p>
+                   
+                        )
+                    })
+                }
                {messages.map(item=>{
                    return(
-                   <p>{item.text}</p>
+                   <p>{item.sender}&nbsp;&nbsp;&nbsp;
+                      {item.text}</p>
                    )
                })}
             </div>
