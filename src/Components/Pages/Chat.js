@@ -5,10 +5,10 @@ import {useParams} from 'react-router-dom'
 import {UserContext} from '../../App'
 import './style.css'
 let socket;
-// const url='https://reactappserver.herokuapp.com';
-const url='http://localhost:5000';
-// const ENDPOINT='https://reactappserver.herokuapp.com';
-const ENDPOINT='http://localhost:5000';
+const url='https://reactappserver.herokuapp.com';
+const ENDPOINT='https://reactappserver.herokuapp.com';
+// const url='http://localhost:5000';
+// const ENDPOINT='http://localhost:5000';
 function Chat() {
 
     const {state}=useContext(UserContext)
