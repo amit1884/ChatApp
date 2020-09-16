@@ -21,6 +21,7 @@ function Profile() {
         .then(res=>res.json())
         .then(result=>{
             console.log(result)
+            setUserData(result)
         })
         .catch(err=>console.log(err))
     },[])
@@ -32,8 +33,8 @@ function Profile() {
                 <img src ={Avatar} alt ="dp"/>
             </div>
             <div className="userdetails">
-                <p>Username</p>
-                <p>Email</p>
+                <p>&nbsp;<i className="fa fa-user" style={{fontSize:"20px"}}></i>&nbsp;&nbsp;{UserData.username}</p>
+                <p>&nbsp;<i className="fa fa-envelope" style={{fontSize:"20px"}}></i>&nbsp;&nbsp;{UserData.email}</p>
             </div>
             <div className="logoutbtn"
                 onClick={()=>{

@@ -210,7 +210,7 @@
     overflow:hidden;
 }
 
-.fa-power-off{
+.fa-power-off,.fa-envelope{
     padding-top:15px;
     font-size:35px;
     color:rgb(204,0,255);
@@ -231,7 +231,7 @@
 }
 .userdetails p{
     border-bottom:1px solid lightgray;
-    padding:15px;
+    padding:10px;
     font-size:23px;
 }
 .logoutbtn{
