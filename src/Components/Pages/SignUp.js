@@ -10,38 +10,65 @@ function SignUp() {
     const[Email,setEmail]=useState('')
     const[Password,setPassword]=useState('')
     const[ConfirmPassword,setConfirmPassword]=useState('')
+    const [Error,setError]=useState(false)
+    const [ErrorMsg,setErrorMsg]=useState('')
     const history=useHistory()
     const SignUpHandler=(e)=>{
         e.preventDefault();
-        fetch(`${url}/signup`,{
-            method:"post",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                username:UserName,
-                password:Password,
-                email:Email,
-            })
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            if(data.error){
-               console.log(data.error)
-            }
-            else{
-               console.log(data.message)
-                history.push('/login')
-            }
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    }
+        if(UserName===''||Email===''||Password===''||ConfirmPassword===''){
+            setErrorMsg('All Fields are required')
+            setError(true)
+        }
+        else if(Password===ConfirmPassword){
 
+            fetch(`${url}/signup`,{
+                method:"post",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    username:UserName,
+                    password:Password,
+                    email:Email,
+                })
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+                if(data.error){
+                   console.log(data.error)
+                }
+                else{
+                   console.log(data.message)
+                    history.push('/login')
+                }
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+        else{
+            console.log('password and confirm password are not same !!')
+            setErrorMsg('Please check your password !')
+            setError(true)
+        }
+    }
+    setTimeout(()=>{
+        if(Error)
+        {
+            setError(false)
+        }
+    },2000)
     return (
       <React.Fragment>
+          {
+              Error?
+              <div className="errorwrapper">
+                  <p><i className="fa fa-question-circle" style={{fontSize:"50px"}}></i>
+                    &nbsp;&nbsp;{ErrorMsg}</p>
+              </div>
+              :null
+          }
       <div className="container-fluid ">
           <div className="row top-area">
               <div className="col-sm-12 text-center">
@@ -89,7 +116,7 @@ function SignUp() {
                         placeholder="Confirm Password"
                         onChange={(e)=>setConfirmPassword(e.target.value)}
                         value={ConfirmPassword}
-                        className="input-tag"
+                        className='input-tag'
                         />
                     </div>
                     <div>

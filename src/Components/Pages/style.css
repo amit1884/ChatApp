@@ -250,3 +250,47 @@
     color:#fff;
     font-family: 'Lobster', cursive;
 }
+
+.errorwrapper{
+    position:fixed;
+    top:40%;
+    left:40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    height:200px;
+    border-radius:20px;
+    z-index:999;
+    box-shadow: 1px 1px 10px red;
+    background-color: #ffff;
+    transition:.3s;
+    color:#0000;
+    text-transform: capitalize;
+    padding:10px;
+}
+
+.errorwrapper p{
+    color:#000;
+}
+
+@media(max-width:991px){
+    .errorwrapper{
+        position:fixed;
+        top:40%;
+        left:12%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:300px;
+        height:200px;
+        border-radius:20px;
+        z-index:999;
+        box-shadow: 1px 1px 10px red;
+        background-color: #ffff;
+        transition:.3s;
+        color:#0000;
+        text-transform: capitalize;
+        padding:10px;
+    }
+}

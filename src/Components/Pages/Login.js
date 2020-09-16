@@ -9,41 +9,64 @@ function Login() {
 
     const[Email,setEmail]=useState('');
     const[Password,setPassword]=useState('')
+    const [Error,setError]=useState(false)
+    const [ErrorMsg,setErrorMsg]=useState('')
     const {dispatch}=useContext(UserContext)
     const history=useHistory();
     const LoginHandler=(e)=>{
         e.preventDefault();
-        fetch(`${url}/signin`,{
-            method:"post",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                email:Email,
-                password:Password
+        if(Email===''||Password==='')
+        {
+            setErrorMsg('All Fields are required !!')
+            setError(true)
+        }
+        else{
+            fetch(`${url}/signin`,{
+                method:"post",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    email:Email,
+                    password:Password
+                })
             })
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            // console.log(data)
-            if(data.error){
-                console.log(data.error)
-            }
-            else{
-                localStorage.setItem("jwt",data.token)
-                localStorage.setItem("user",JSON.stringify(data.user))
-                dispatch({type:"USER",payload:data.user})
-                console.log("Logged In Successfully")
-                history.push('/')
-            }
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+            .then(res=>res.json())
+            .then(data=>{
+                // console.log(data)
+                if(data.error){
+                    console.log(data.error)
+                }
+                else{
+                    localStorage.setItem("jwt",data.token)
+                    localStorage.setItem("user",JSON.stringify(data.user))
+                    dispatch({type:"USER",payload:data.user})
+                    console.log("Logged In Successfully")
+                    history.push('/')
+                }
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
     }
+    setTimeout(()=>{
+        if(Error)
+        {
+            setError(false)
+        }
+    },2000)
 
     return (
       <React.Fragment>
+           {
+              Error?
+              <div className="errorwrapper">
+                  <p><i className="fa fa-question-circle" style={{fontSize:"50px"}}></i>
+                    &nbsp;&nbsp;{ErrorMsg}</p>
+              </div>
+              :null
+          }
       <div className="container-fluid ">
           <div className="row top-area">
               <div className="col-sm-12 text-center">
