@@ -6,13 +6,14 @@ import Navbar from '../Navbar';
 import SearchBtn from '../SearchBtn';
 import img from '../../Images/homeempty.svg';
 const url='https://reactappserver.herokuapp.com';
+// const url='http://localhost:5000'
 function Home() {
 
     const [FriendsDetails,setFriendDetails]=useState([]) //Storing all the friends in an array
  
     useEffect(()=>{
 
-        console.log('getting friend list')
+        // console.log('getting friend list')
         fetch(`${url}/getfriends`,{
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
@@ -20,7 +21,7 @@ function Home() {
         })
         .then(res=>res.json())
         .then(result=>{
-            console.log('result  ',result.friendList)
+            // console.log('result  ',result.friendList)
             setFriendDetails(result.friendList)
         })
     },[])

@@ -3,6 +3,7 @@ import './style.css';
 import {Link,useHistory} from 'react-router-dom'
 import Brand from '../../Images/mainlogo.png'
 const url='https://reactappserver.herokuapp.com';
+// const url='http://localhost:5000';
 function SignUp() {
 
     const[UserName,setUserName]=useState('');

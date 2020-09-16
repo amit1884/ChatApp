@@ -6,6 +6,8 @@ import Login from './Components/Pages/Login';
 import SignUp from './Components/Pages/SignUp';
 import Search from './Components/Pages/Search';
 import Chat from './Components/Pages/Chat'
+import Profile from './Components/Pages/Profile';
+import FriendProfile from './Components/Pages/FriendProfile';
 export const UserContext=createContext()
 const Routing=()=>{
   const history=useHistory()
@@ -40,6 +42,12 @@ const Routing=()=>{
       </Route>
       <Route path ="/chat/:friend/:id/:room">
         <Chat/>
+      </Route>
+      <Route path ="/profile/:id">
+      <Profile/>
+      </Route>
+      <Route path="/friendprofile/:id">
+        <FriendProfile/>
       </Route>
     </Switch>
   )

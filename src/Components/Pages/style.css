@@ -209,3 +209,44 @@
     word-wrap: break-word;
     overflow:hidden;
 }
+
+.fa-power-off{
+    padding-top:15px;
+    font-size:35px;
+    color:rgb(204,0,255);
+}
+
+.profile-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-img img{
+    width:300px;
+    height:300px;
+    border-radius: 50%;
+}
+.userdetails{
+    box-shadow: 1px 1px 5px lightgray;
+}
+.userdetails p{
+    border-bottom:1px solid lightgray;
+    padding:15px;
+    font-size:23px;
+}
+.logoutbtn{
+    position:fixed;
+    bottom:0;
+    z-index:9999;
+    width:100%;
+    border:none;
+    box-shadow:1px 1px 20px lightgray;
+    background-color: rgba(255, 0, 0, 0.829);
+    padding:10px;
+    text-align: center;
+}
+.logoutbtn p{
+    font-size:25px;
+    color:#fff;
+    font-family: 'Lobster', cursive;
+}

@@ -1,7 +1,6 @@
 .header{
     background:rgb(242, 195, 253);
     box-shadow:.5px .5px 10px rgb(204,0,255);
-
 }
 .top-nav{
     padding:10px;
@@ -15,10 +14,11 @@
     font-size:25px;
     font-family: 'Lobster', cursive;
 }
-.fa-power-off{
+.fa-user{
     padding-top:15px;
     font-size:35px;
     color:rgb(204,0,255);
+    cursor: pointer;
 }
 
 .floating-btn{

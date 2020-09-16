@@ -5,8 +5,10 @@ import {useParams} from 'react-router-dom'
 import {UserContext} from '../../App'
 import './style.css'
 let socket;
-const url='https://reactappserver.herokuapp.com';
-const ENDPOINT='https://reactappserver.herokuapp.com';
+// const url='https://reactappserver.herokuapp.com';
+const url='http://localhost:5000';
+// const ENDPOINT='https://reactappserver.herokuapp.com';
+const ENDPOINT='http://localhost:5000';
 function Chat() {
 
     const {state}=useContext(UserContext)
@@ -57,7 +59,7 @@ function Chat() {
     }
     return (
         <>
-        <InfoBar friend={Friend} style={{position:"fixed",top:0}}/>
+        <InfoBar friend={Friend} friendId={id} style={{position:"fixed",top:0}}/>
         <div className="container-fluid">
             <div className="message-area">
                 {
