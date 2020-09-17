@@ -14,5 +14,12 @@ export const reducer=(state,action)=>{
             friendList:action.payload.friendList,
         }
     }
+    if(action.type==='UPDATEPIC')
+    {
+        return {
+            ...state,
+            pic:action.payload.pic
+        }
+    }
     return state
 }

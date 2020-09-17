@@ -220,6 +220,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 .profile-img img{
     width:300px;
@@ -240,7 +242,7 @@
     z-index:9999;
     width:100%;
     border:none;
-    box-shadow:1px 1px 20px lightgray;
+    box-shadow:1px 1px 30px lightgray;
     background-color: rgba(255, 0, 0, 0.829);
     padding:10px;
     text-align: center;
@@ -293,4 +295,10 @@
         text-transform: capitalize;
         padding:10px;
     }
+}
+
+
+.custom-file-label::after{
+    background-color: rgb(154,0,255) !important;
+    color:#fff;
 }
