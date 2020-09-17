@@ -41,7 +41,7 @@ function Home() {
                     to ={`/chat/${item.users.username}/${item.users._id}/${item.room}`} 
                     key={item.users._id}>
                     <p className="friend">
-                        <img src ={Avatar} alt ="dp" align="left"width="50" height="50"/>
+                        <img src ={item.users.pic} alt ="dp" align="left"width="50" height="50" style={{borderRadius:"50%"}}/>
                         &nbsp;&nbsp;
                         <span className="namearea">{item.users.username}</span>
                     </p>

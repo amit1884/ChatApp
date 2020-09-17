@@ -90,7 +90,7 @@ const AddFriend=()=>{
                                 ?
                                 <div className="single-user" onClick={()=>openModal(item._id,item.username)}>
                                 <p key={item._id}>
-                                    <img src ={Avatar} alt="userdp"align="left" width="40" height="40"/>&nbsp;&nbsp;
+                                    <img src ={item.pic} alt="userdp"align="left" width="40" height="40" style={{borderRadius:"50%"}}/>&nbsp;&nbsp;
                                     {item.username}
                                 </p>
                             </div>
