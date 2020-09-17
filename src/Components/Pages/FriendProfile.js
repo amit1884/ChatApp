@@ -27,7 +27,7 @@ function FriendProfile() {
        <Navbar/>
         <div className="constainer-fluid">
             <div className="profile-img">
-                <img src ={Avatar} alt ="dp"/>
+                <img src ={UserData.pic} alt ="dp"/>
             </div>
             <div className="userdetails">
                 <p>&nbsp;<i className="fa fa-user" style={{fontSize:"20px"}}></i>&nbsp;&nbsp;{UserData.username}</p>

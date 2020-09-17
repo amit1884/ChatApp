@@ -3,7 +3,7 @@ import './style.css';
 import {UserContext} from '../../App'
 import Navbar from '../Navbar';
 import './style.css'
-import Avatar from '../../Images/mainlogo.png'
+// import Avatar from '../../Images/mainlogo.png'
 const url='https://reactappserver.herokuapp.com';
 // const url='http://localhost:5000';
 function Search() {

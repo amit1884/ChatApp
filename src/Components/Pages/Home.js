@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import './style.css'
 import { Link } from 'react-router-dom';
-import Avatar from '../../Images/mainlogo.png';
+// import Avatar from '../../Images/mainlogo.png';
 import Navbar from '../Navbar';
 import SearchBtn from '../SearchBtn';
 import img from '../../Images/homeempty.svg';

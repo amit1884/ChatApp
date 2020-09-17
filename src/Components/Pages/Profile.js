@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react'
 import './style.css'
 import { useHistory ,useParams} from 'react-router-dom';
-import Avatar from '../../Images/mainlogo.png';
+// import Avatar from '../../Images/mainlogo.png';
 import Navbar from '../Navbar';
 import {UserContext} from '../../App'
 const url='https://reactappserver.herokuapp.com';
