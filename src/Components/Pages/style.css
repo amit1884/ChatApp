@@ -196,7 +196,7 @@
     color:#fff;
     float:right;
     display:block;
-    min-width:20%;
+    min-width:auto;
     max-width:60%;
     border-radius: 50px;
     word-wrap: break-word;
@@ -207,7 +207,7 @@
     padding:10px;
     margin-top:5px;
     margin-bottom: 5px;
-    min-width:20%;
+    min-width:auto;
     max-width:60%;
     font-size:15px;
     background:rgb(186, 108, 238);
