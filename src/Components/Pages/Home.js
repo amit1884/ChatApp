@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SearchBtn from '../SearchBtn';
 import img from '../../Images/homeempty.svg';
+import Loader from '../Loader';
 const url='https://reactappserver.herokuapp.com';
 // const url='http://localhost:5000'
 function Home() {
 
     const [FriendsDetails,setFriendDetails]=useState([]) //Storing all the friends in an array
- 
+    const [ShowLoader,setShowLoader]=useState(true)
     useEffect(()=>{
 
         // console.log('getting friend list')
@@ -23,6 +24,7 @@ function Home() {
         .then(result=>{
             // console.log('result  ',result.friendList)
             setFriendDetails(result.friendList)
+            setShowLoader(false)
         })
     },[])
 
@@ -30,6 +32,7 @@ function Home() {
 
     return (
        <>
+       {ShowLoader?<Loader/>:null}
        <Navbar/>
        <SearchBtn/>
         {
@@ -41,7 +44,7 @@ function Home() {
                     to ={`/chat/${item.users.username}/${item.users._id}/${item.room}`} 
                     key={item.users._id}>
                     <p className="friend">
-                        <img src ={item.users.pic} alt ="dp" align="left"width="50" height="50" style={{borderRadius:"50%"}}/>
+                        <img src ={item.users.pic} alt ="dp" align="left"width="50" height="50" style={{borderRadius:"50%",border:"1px solid lightgray"}}/>
                         &nbsp;&nbsp;
                         <span className="namearea">{item.users.username}</span>
                     </p>

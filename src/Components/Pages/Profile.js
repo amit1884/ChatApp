@@ -1,9 +1,10 @@
 import React,{useState,useEffect,useContext} from 'react'
 import './style.css'
 import { useHistory ,useParams} from 'react-router-dom';
-// import Avatar from '../../Images/mainlogo.png';
+import Avatar from '../../Images/mainlogo.png';
 import Navbar from '../Navbar';
 import {UserContext} from '../../App'
+import Loader from '../Loader';
 const url='https://reactappserver.herokuapp.com';
 // const url='http://localhost:5000';
 function Profile() {
@@ -13,6 +14,7 @@ function Profile() {
     const [UserData,setUserData]=useState({})
     const [Image,setImage]=useState('')
     const [Url,setUrl]=useState(undefined)
+    const [ShowLoader,setShowLoader]=useState(true)
     useEffect(()=>{
         fetch(`${url}/userprofile/${id}`,{
             headers:{
@@ -23,6 +25,7 @@ function Profile() {
         .then(result=>{
             console.log('userprofile : ',result)
             setUserData(result)
+            setShowLoader(false)
         })
         .catch(err=>console.log(err))
     },[])
@@ -74,10 +77,11 @@ function Profile() {
     }
     return (
        <>
+       {ShowLoader?<Loader/>:null}
        <Navbar/>
         <div className="constainer-fluid">
             <div className="profile-img">
-                <img src ={UserData.pic} alt ="dp"/>
+                <img src ={UserData.pic?UserData.pic:Avatar} alt ="dp"/>
             </div>
             <form onSubmit={UploadPic}>
                 <div class="input-group">
